@@ -1,5 +1,6 @@
-<?php require_once 'Encode.php'; ?>
-<?php 
+<?php
+require_once 'Encode.php'; 
+
  $a = $_POST['number1'];
  $b = $_POST['number2'];
  $c = '';

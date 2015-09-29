@@ -1,25 +1,32 @@
 <?php
 require_once 'Encode.php'; 
 
- $a = $_POST['number1'];
- $b = $_POST['number2'];
- $c = '';
-foreach ($_POST as $value) {
-	switch ($value) {
-		case '+' :
-			$c = $a + $b;
-			break;
-		case '-' :
-			$c = $a - $b;
-			break;
-		case '×' :
-			$c = $a * $b;
-			break;
-		case '÷' :
-			$c = $a / $b;
-			break;
-	}
+ $post = $_POST;
+
+ $number1 = $post['number1'];
+ $number2 = $post['number2'];
+ $kigou = "";
+ $result = "";
+ 
+ if (isset($post['kigou'])){
+    $kigou = $post['kigou'];
 }
+
+ switch ($kigou) {
+    case '+' :
+        $result = $number1 + $number2;
+        break;
+    case '-' :
+        $result = $number1 - $number2;
+        break;
+    case '×' :
+        $result = $number1 * $number2;
+        break;
+    case '÷' :
+        $result = $number1 / $number2;
+        break;
+}
+
 ?>
 <html>
 <head>
@@ -29,20 +36,20 @@ foreach ($_POST as $value) {
 
 <form method = "POST" action = "calculator1.php">
 
-<input type = "text" name = "number1" size = "10" value ="<?php print $a; ?>" />
+<input type = "text" name = "number1" size = "10" value ="<?php print $number1; ?>" />
 
 <select name = "kigou">
-<option value ="+" selected> ＋ </option>
-<option value ="-"> − </option>
-<option value ="×"> × </option>
-<option value ="÷"> ÷ </option>
+<option value ="+" <?php if ($kigou == '+'){print 'selected';} ?>> + </option>
+<option value ="-" <?php if ($kigou == '-'){print 'selected';} ?>> − </option>
+<option value ="×"<?php if ($kigou == '×'){print 'selected';} ?>> × </option>
+<option value ="÷"<?php if ($kigou == '÷'){print 'selected';} ?>> ÷ </option>
 </select>
 
-<input type = "text" name = "number2" size = "10" value ="<?php print $b; ?>"/>
+<input type = "text" name = "number2" size = "10" value ="<?php print $number2; ?>"/>
 
 <input type = "submit" value = "=" />
 
-<span><?php print $c; ?></span>
+<span><?php print e($result); ?></span>
 
 
 </form>

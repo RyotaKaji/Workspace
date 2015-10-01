@@ -2,6 +2,7 @@
 
  $post = $_POST;
 
+
 //変数が定義されているか
 //変数がnull/blank(empty関数)でないか→初期resultも消える
  if (!isset($post['kigou']) or empty($post['kigou'])) {
@@ -23,7 +24,7 @@
 //記号チェック(nullじゃないかの確認も)
 
  if (isset($post['kigou'])){
-    if ($post['kigou'] == 0 or $post['kigou'] == 1 or $post['kigou'] == 2 or $post['kigou'] == 3) { 
+    if ($post['kigou'] == '0' or $post['kigou'] == '1' or $post['kigou'] == '2' or $post['kigou'] == '3') { 
        $kigou = $post['kigou'];
 }
 }
@@ -31,20 +32,19 @@
 
 //計算する＆ゼロ除算を防ぐ
 
-if ($kigou == 0) {
+if ($kigou == '0') {
     $result = $number1 + $number2;
-} else if ($kigou == 1) {
+} else if ($kigou == '1') {
     $result = $number1 - $number2;
-} else if ($kigou == 2) {
+} else if ($kigou == '2') {
     $result = $number1 * $number2;
-} else if ($kigou == 3 && $number2 == 0) {
+} else if ($kigou == '3' && $number2 == '0') {
     $result = 'error';
-} else if ($kigou == 3 && $number2 != 0) {
+} else if ($kigou == '3' && $number2 != '0') {
     $result = $number1 / $number2;
 } else {
     $result = "";
 }
-
 ?>
 <html>
 <head>

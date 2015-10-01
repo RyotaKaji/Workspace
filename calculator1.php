@@ -4,11 +4,10 @@
 
 //変数が定義されているか
 //変数がnull/blank(empty関数)でないか→初期resultも消える
- if (!isset($post['kigou'])) {
-    if (empty($post['kigou'])) {
+ if (!isset($post['kigou']) or empty($post['kigou'])) {
         $kigou = "";
-    }
 }
+
 
 //それぞれの入力値が数字かどうかチェックする
 
@@ -32,15 +31,15 @@
 
 //計算する＆ゼロ除算を防ぐ
 
-if ($kigou == '0') {
+if ($kigou == 0) {
     $result = $number1 + $number2;
-} else if ($kigou == '1') {
+} else if ($kigou == 1) {
     $result = $number1 - $number2;
-} else if ($kigou == '2') {
+} else if ($kigou == 2) {
     $result = $number1 * $number2;
-} else if ($kigou == '3' && $number2 == 0) {
+} else if ($kigou == 3 && $number2 == 0) {
     $result = 'error';
-} else if ($kigou == '3' && $number2 != 0) {
+} else if ($kigou == 3 && $number2 != 0) {
     $result = $number1 / $number2;
 } else {
     $result = "";
